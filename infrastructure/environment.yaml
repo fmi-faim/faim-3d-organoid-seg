@@ -1,0 +1,17 @@
+name: organoid-seg
+channels:
+  - awolny
+  - lcerrone
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.9
+  - scikit-image
+  - matplotlib
+  - pandas
+  - pip
+  - pip:
+    - binarymeshformat
+    - questionary
+    - numpy-stl

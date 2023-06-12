@@ -1,0 +1,7 @@
+input_dir: ../../../../Data/nicole_organoid3D_cell/annot
+spacing:
+- 0.6
+- 0.216
+- 0.216
+step_size: 3
+output_dir: ../../../../Data/nicole_organoid3D_cell/annot
