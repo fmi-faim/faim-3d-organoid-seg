@@ -19,7 +19,7 @@ def build_config():
                                  validate=lambda v: v.replace(".", "").isdigit()).ask())
     
     step_size = int(questionary.text("Marching cube step_size:",
-                                     default=4,
+                                     default="4",
                                      validate=lambda v: v.isdigit()).ask())
     
     output_dir = questionary.path("Path to output directory:").ask()
