@@ -1,15 +1,15 @@
 name: organoid-seg
 channels:
-  - awolny
-  - lcerrone
-  - pytorch
-  - nvidia
   - conda-forge
 dependencies:
-  - python=3.9
+  - python
+  - openjdk=11
+  - pyimagej
   - scikit-image
   - matplotlib
   - pandas
+  - pyyaml
+  - tqdm
   - pip
   - pip:
     - binarymeshformat
