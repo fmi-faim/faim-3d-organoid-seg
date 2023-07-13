@@ -11,8 +11,8 @@ def build_config():
     m2_repo = questionary.path("Path to local maven repository:").ask()
     jgo_cache_dir = questionary.path("Path to jgo cache directory:").ask()
 
-    intensity_image = questionary.path("Path to intensity image:").ask()
-    intensity_image = os.path.relpath(intensity_image, cwd)
+    image_path = questionary.path("Path to intensity image:").ask()
+    image_path = os.path.relpath(image_path, cwd)
 
     input_mesh_file = questionary.path("Path to mesh file:").ask()
     input_mesh_file = os.path.relpath(input_mesh_file, cwd)
@@ -69,7 +69,7 @@ def build_config():
     config = {
         "m2_repo": m2_repo,
         "jgo_cache_dir": jgo_cache_dir,
-        "intensity_image": intensity_image,
+        "image_path": image_path,
         "input_mesh_file": input_mesh_file,
         "output_mesh_file": output_mesh_file,
         "gamma": gamma,
