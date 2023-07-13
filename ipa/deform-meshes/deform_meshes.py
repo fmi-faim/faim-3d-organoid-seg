@@ -20,6 +20,8 @@ logger.addHandler(handler)
 
 
 def deform_meshes(options: dict):
+    config.set_m2_repo(options.pop("m2_repo"))
+    config.set_cache_dir(options.pop("jgo_cache_dir"))
     ij = imagej.init(["paluchlab:Deformable_Mesh:0.9.9-SNAPSHOT","net.imagej:imagej"])
     image = imread(options.pop("image_path"))
     data_array = xr.DataArray(image, dims=["z","y","x"])
@@ -31,14 +33,14 @@ def deform_meshes(options: dict):
 
 if __name__ == "__main__":
     with open('deform_meshes.yaml', 'r') as f:
-        config = yaml.safe_load(f)
+        options = yaml.safe_load(f)
 
     logger.info(f"Working directory: {os.getcwd()}")
     logger.info(f"Run deform_meshes with the following parameters: {config}")
 
 
     deform_meshes(
-        options=config,
+        options=options,
     )
 
     logger.info("Done!")

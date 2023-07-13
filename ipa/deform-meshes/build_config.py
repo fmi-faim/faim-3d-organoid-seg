@@ -8,6 +8,9 @@ import yaml
 def build_config():
     cwd = os.getcwd()
 
+    m2_repo = questionary.path("Path to local maven repository:").ask()
+    jgo_cache_dir = questionary.path("Path to jgo cache directory:").ask()
+
     intensity_image = questionary.path("Path to intensity image:").ask()
     intensity_image = os.path.relpath(intensity_image, cwd)
 
@@ -64,6 +67,8 @@ def build_config():
     ).ask())
 
     config = {
+        "m2_repo": m2_repo,
+        "jgo_cache_dir": jgo_cache_dir,
         "intensity_image": intensity_image,
         "input_mesh_file": input_mesh_file,
         "output_mesh_file": output_mesh_file,
