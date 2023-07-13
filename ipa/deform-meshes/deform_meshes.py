@@ -26,7 +26,8 @@ def deform_meshes(options: dict):
     image = imread(options.pop("image_path"))
     data_array = xr.DataArray(image, dims=["z","y","x"])
     options["intensity_image"] = data_array
-    with open("Mesh_Deformation.groovy") as f:
+    script_path = Path(__file__).with_name("Mesh_Deformation.groovy")
+    with script_path.open("r") as f:
         script = f.read()
     ij.py.run_script(language="groovy", script=script, args=options)
 
