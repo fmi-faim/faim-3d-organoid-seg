@@ -1,5 +1,4 @@
 #@ File (style="extension:bmf") input_mesh_file
-#@ File (style="save") output_mesh_file
 #@ ImagePlus intensity_image
 #@ LogService log
 #@ Double (value=200.0) gamma
@@ -13,6 +12,10 @@
 #@ Integer (value=100) n_iterations
 #@ Integer (value=5) n_batches
 
+#@output label_image
+
+import deformablemesh.DeformableMesh3DTools
+import deformablemesh.MeshImageStack
 import deformablemesh.SegmentationModel 
 import deformablemesh.externalenergies.ImageEnergyType
 import deformablemesh.geometry.ConnectionRemesher
@@ -69,7 +72,8 @@ for (i in 1..n_batches) {
 	it[0].addMesh(FRAME, it[1])
 }
 
-// Write meshes to file
-log.info( "Writing " + tracks.size() + " meshes..." )
-MeshWriter.saveMeshes(output_mesh_file, tracks)
-log.info( "Finished writing deformed and remeshed meshes." )
+// Convert meshes to label image
+log.info("Creating label image...")
+mesh_image_stack = new MeshImageStack(intensity_image)
+label_image = DeformableMesh3DTools.createUniqueLabelsRepresentation(mesh_image_stack, tracks)
+log.info("Done.")
